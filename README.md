@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#  Projet Accessibilité – Dashboard & Landing Page
+##  Objectif du projet
 
-## Getting Started
+Le projet consiste à reproduire deux maquettes :
 
-First, run the development server:
+Dashboard (Desktop + Mobile)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Landing Page (Desktop + Mobile)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+En deux versions :
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Version A – Non accessible
+→ Reproduction volontaire avec erreurs (mauvaise sémantique, pas de labels, focus invisible, etc.)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Version B – Accessible
+→ Correction complète selon les bonnes pratiques WCAG AA
 
-## Learn More
+Ce README explique clairement les corrections apportées dans la Version B.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# ✅ VERSION B — Corrections Apportées (accessible)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+La version B applique toutes les règles WCAG AA demandées dans le PDF.
 
-## Deploy on Vercel
+## ✔️ Structure HTML sémantique
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Ajout de vrais landmarks :
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<header>
+
+<nav>
+
+<main>
+
+<footer>
+
+Titres hiérarchisés (h1 > h2 > h3)
+
+Nettoyage complet du DOM
+
+## ✔️ Navigation clavier
+
+Tous les éléments interactifs sont en <button> ou <a>
+
+Focus visible (anneau violet)
+
+Ordre logique du focus
+
+Aucune action dépendante uniquement de la souris
+
+## ✔️ Modale accessible
+
+role="dialog"
+
+aria-modal="true"
+
+aria-labelledby
+
+Fermeture avec Échap
+
+Retour du focus sur le bouton qui a ouvert la modale
+
+Focus automatique dans la modale
+
+Focus trap (impossible de sortir accidentellement)
+
+## ✔️ Formulaires accessibles
+
+Ajout de vrais labels
+
+for="" + id="" reliés
+
+Champs obligatoires annoncés
+
+Placeholders utilisés uniquement comme aides visuelles (et non comme labels)
+
+Navigation possible entièrement au clavier
+
+  
+## ✔️ ARIA & Accessibilité
+
+Ajout de aria-label sur les icônes (menu, fermer, ajouter…)
+
+Images décoratives → alt=""
+
+Images importantes → alt="description"
+
+role="search" sur la barre de recherche
+
+aria-describedby sur certains champs
+
+## ✔️ Contrastes & perception
+
+Amélioration du contraste des textes
+
+Couleurs de boutons suffisamment visibles
+
+Respect du ratio AA minimum
+
+#  Résultat obtenu
+✔️ Dashboard Desktop – Accessible
+✔️ Dashboard Mobile – Accessible
+✔️ Landing Desktop – Accessible
+✔️ Landing Mobile – Accessible
+
+Tous les écrans fonctionnent :
+
+au clavier
+
+au lecteur d’écran
+
+avec focus visible
+
+avec une modale totalement accessible
